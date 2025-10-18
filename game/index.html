@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>スライム育成（コンパクト版）</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>スライム育成</h1>
+      <div class="top-actions">
+        <button id="settingBtn" class="icon-btn" title="設定">⚙️</button>
+        <div id="saveStatus" class="save-status">自動セーブON</div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="left">
+        <div class="slime-wrap" id="slimeWrap" title="タップでEXP">
+          <div class="slime" id="slimeBtn" aria-label="スライム"></div>
+          <div id="floatArea" class="float-area"></div>
+        </div>
+
+        <div class="controls">
+          <button id="clickBtn" class="primary">タップでEXP</button>
+          <button id="maxBtn" class="secondary">MAXで強化</button>
+        </div>
+      </section>
+
+      <aside class="right">
+        <div class="stats-grid">
+          <div class="card stat">
+            <div class="label">レベル</div>
+            <div class="value" id="level">1</div>
+          </div>
+          <div class="card stat">
+            <div class="label">EXP</div>
+            <div class="value"><span id="exp">0</span>/<span id="need">10</span></div>
+          </div>
+          <div class="card stat">
+            <div class="label">コイン</div>
+            <div class="value" id="coins">0</div>
+          </div>
+          <div class="card stat">
+            <div class="label">クリック</div>
+            <div class="value" id="perClick">1</div>
+          </div>
+          <div class="card stat">
+            <div class="label">放置/s</div>
+            <div class="value" id="idleRate">0</div>
+          </div>
+          <div class="card stat">
+            <div class="label">ランク</div>
+            <div class="value" id="rank">初心者</div>
+          </div>
+        </div>
+
+        <div class="expbar">
+          <div class="bar"><i id="expBar"></i></div>
+        </div>
+
+        <div class="shop-card card" id="shop">
+          <div class="shop-title">ショップ</div>
+          <!-- items injected by JS -->
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-left">UI: コンパクト・レスポンシブ</div>
+      <div class="footer-right"><button id="manualSaveBtn" class="link-btn">仮セーブ</button></div>
+    </footer>
+  </div>
+
+  <!-- 設定モーダル -->
+  <div id="settings" class="modal hidden" aria-hidden="true">
+    <div class="modal-body" role="dialog" aria-modal="true">
+      <h2>⚙️ 設定</h2>
+
+      <div class="form-row">
+        <label><input type="checkbox" id="bgmToggle" checked> BGM</label>
+      </div>
+
+      <div class="form-row">
+        <label>音量 <input id="volumeRange" type="range" min="0" max="1" step="0.05" value="0.5"></label>
+      </div>
+
+      <div class="form-row">
+        <label>UIサイズ
+          <select id="uiSize">
+            <option value="normal">通常</option>
+            <option value="large">大きめ</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="form-row btn-row">
+        <button id="manualSaveInModal" class="primary">仮セーブ</button>
+        <button id="resetBtn" class="danger">データリセット</button>
+      </div>
+
+      <div class="form-row">
+        <button id="closeSettings" class="secondary">閉じる</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
